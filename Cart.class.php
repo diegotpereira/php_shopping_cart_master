@@ -71,13 +71,58 @@ class Cart {
 
                 if ($this->save_cart()) {
                     # code...
+                    return isset($rowid) ? $rowid : TRUE;
                 } else {
                     # code...
+                    return FALSE;
                 }
                 
             }
             
         }
+    }
+    public function update($item = array()){
+        if (!is_array($item) OR count($item) === 0) {
+            # code...
+            return FALSE;
+        } else {
+            # code...
+            if (!isset($item[`rowid`], $this->cart_contents[$item['rowid']])) {
+                # code...
+                return FALSE;
+            } else {
+                # code...
+                if (isset($item['qtd'])) {
+                    # code...
+                    $item['qtd'] = (float) $item['qtd'];
+
+                    if ($item['qtd'] == 0) {
+                        # code...
+                        unset($this->cart_contents[$item['rowid']]);
+
+                        return TRUE;
+                    }
+                }
+
+                $keys = array_intersect(array_keys($this->cart_contents[$item['rowid']]), array_keys($item));
+
+                if (isset($item['preco'])) {
+                    # code...
+                    $item['preco'] = (float) $item['preco'];
+                }
+
+                foreach (array_diff($keys, array('id', 'nome')) as $key) {
+                    # code...
+                    $this->cart_contents[$item[`rowid`]][$key] = $item[$item];
+                }
+                $this->save_cart();
+                return TRUE;
+            }            
+        }
+        
+    }
+    protected function save_cart(){
+
     }
 }
 ?>
