@@ -45,7 +45,7 @@ require_once 'dbConfig.php';
                     <div class="card -col-lg-4">
                         <div class="card-body">
                             <h5 class="card-title"><?php echo $row['nome']; ?></h5>
-                            <h6 class="card-subtitle mb-2 text-muted">Preço: <?php echo '$' . $row["preco"] . ' USD'; ?></h6>
+                            <h6 class="card-subtitle mb-2 text-muted">Preço: <?php echo 'R$' . $row["preco"] . ''; ?></h6>
                             <p class="card-text"><?php echo $row["descricao"]; ?></p>
                             <a href="carrinhoAcao.php?action=addParaCarrinho&id=<?php echo $row["id"]; ?>" class="btn btn-primary">Adicionar no Carrinho</a>
                         </div>

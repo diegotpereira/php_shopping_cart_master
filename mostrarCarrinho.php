@@ -70,21 +70,21 @@ $carrinho = new Carrinho;
 
                                         <tr>
                                             <td><?php echo $item["nome"]; ?></td>
-                                            <td><?php echo '$' . $item["preco"] . ' R$'; ?></td>
+                                            <td><?php echo 'R$' . $item["preco"] . ''; ?></td>
                                             <td><input class="form-control" type="number" value="<?php echo $item["qtd"]; ?>" onchange="alterarCarrinhoItem(this, '<?php echo $item["rowid"]; ?>')" /></td>
-                                            <td class="text-right"><?php echo '$'.$item["subtotal"].'R$'; ?></td>
+                                            <td class="text-right"><?php echo 'R$'.$item["subtotal"].''; ?></td>
                                             <td class="text-right"><button class="btn btn-sm btn-danger" onclick="return confirm ('Tem Certeza?')?window.location.href='carrinhoAcao.php?action=removeCarrinhoItem&id=<?php echo $item["rowid"]; ?>':false;" <i class="itrash"></i> </button> </td>
                                         </tr>
                                     <?php }
                                 } else { ?>
-                                    # code...
+                                    
                                     <tr>
                                         <td colspan="5">
                                             <p>Seu carrinho está vazio...</p>
                                         </td>
                                     <?php } ?>
                                     <?php if ($carrinho->total_itens() > 0) { ?>
-                                        # code...
+
                                     <tr>
                                         <td></td>
                                         <td></td>
@@ -107,7 +107,7 @@ $carrinho = new Carrinho;
 
                         <div class="col-sm-12 col-md-6 text-right">
                             <?php if ($carrinho->total_itens() > 0) { ?>
-                                # code...
+                                
                                 <a href="verificar.php" class="btn btn-lg btn-block btn-primary">Confirmar</a>
                             <?php } ?>
                         </div>
