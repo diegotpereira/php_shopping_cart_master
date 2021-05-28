@@ -114,6 +114,8 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
                         # code...
                         $sql .= "INSERT INTO pedido_itens(pedido_id, produto_id, quantidade) VALUES ('".$pedidoID."', '".$item['id']."', '".$item['qtd']."'); ";
 
+                    }    
+
                         //Insira os itens do pedido no banco de dados
                         $insertPedidoItens = $db->multi_query($sql);
 
@@ -150,4 +152,3 @@ if (isset($_REQUEST['action']) && !empty($_REQUEST['action'])) {
     //Redirecionar para a página específica
     header("Location: $redirectLoc");
     exit();
-}

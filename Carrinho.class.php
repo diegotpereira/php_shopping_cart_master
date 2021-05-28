@@ -14,7 +14,7 @@ class Carrinho {
         $this->cart_contents = !empty($_SESSION['cart_contents'])?$_SESSION['cart_contents']:NULL; 
         if ($this->cart_contents === NULL){ 
             // definir alguns valores base 
-            $this->cart_contents = array('cart_total' => 0, 'total_items' => 0); 
+            $this->cart_contents = array('cart_total' => 0, 'total_itens' => 0); 
         } 
     } 
 
@@ -41,7 +41,7 @@ class Carrinho {
      * @return array 
      */
     public function get_item($row_id){
-        return (in_array($row_id, array('total_items', 'cart_total'), TRUE) OR ! isset($this->cart_contents[$row_id]))
+        return (in_array($row_id, array('total_itens', 'cart_total'), TRUE) OR ! isset($this->cart_contents[$row_id]))
         ? FALSE 
         : $this->cart_contents[$row_id];
     }
@@ -50,8 +50,8 @@ class Carrinho {
      * Retorna a contagem total de itens 
      * @return int
      */
-    public function total_items(){
-        return $this->cart_contents['total_items'];
+    public function total_itens(){
+        return $this->cart_contents['total_itens'];
     }
     /**
      * Retorna o preço total
@@ -176,7 +176,7 @@ class Carrinho {
      * @return bool
      */
     protected function save_cart(){
-        $this->cart_contents['total_items'] = $this->cart_contents['cart_total'] = 0;
+        $this->cart_contents['total_itens'] = $this->cart_contents['cart_total'] = 0;
 
         foreach ($this->cart_contents as $key => $val){
 
@@ -186,8 +186,8 @@ class Carrinho {
                 continue;
             }
             $this->cart_contents['cart_total'] += ($val['preco'] * $val['qtd']);
-            $this->cart_contents['total_items'] += ($val['qtd']);
-            $this->cart_contents['subtotal'] = ($this->cart_contents[$key]['preco']) * $this->cart_contents[$key]['qtd'];
+            $this->cart_contents['total_itens'] += ($val['qtd']);
+            $this->cart_contents[$key]['subtotal'] = ($this->cart_contents[$key]['preco']) * $this->cart_contents[$key]['qtd'];
         }
 
         // se o carrinho estiver vazio, exclua-o da sessão
@@ -220,7 +220,7 @@ class Carrinho {
      * @return void
      */
     public function destroy(){
-        $this->cart_contents = array('cart_total' => 0, 'total_items' => 0);
+        $this->cart_contents = array('cart_total' => 0, 'total_itens' => 0);
         unset($_SESSION['cart_contents']);  
     }
 }

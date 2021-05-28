@@ -3,7 +3,7 @@
 
 $dbHost = "localhost";
 $dbUsuario = "root";
-$dbsenha = "root";
+$dbSenha = "root";
 $dbNome = "php_shopping_cart_master";
 
 // Conexão com banco de dados;
