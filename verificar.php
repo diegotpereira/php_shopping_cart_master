@@ -4,6 +4,7 @@ require_once 'dbConfig.php';
 
 // Inicializar carringo de compras
 include_once 'Carrinho.class.php';
+$carrinho = new Carrinho;
 
 // Se o carrinho estiver vazio, redirecione para a página de produtos
 
@@ -73,7 +74,7 @@ if (!empty($sessData['status']['msg'])) {
                                     <li class="list-group-item d-flex justify-content-between lh-condensed">
                                         <div>
                                             <h6 class="my-0"><?php echo $item["nome"]; ?></h6>
-                                            <small class="text-muted"><?php echo '$' . $item['preco']; ?>
+                                            <small class="text-muted"><?php echo 'R$' . $item['preco']; ?>
                                                 (<?php echo $item["qtd"]; ?>)
                                             </small>
                                         </div>
@@ -83,7 +84,7 @@ if (!empty($sessData['status']['msg'])) {
 
                             <li class="list-group-item d-flex justify-content-between">
                                 <span>Total (R$)</span>
-                                <strong><?php echo '$' . $carrinho->total(); ?></strong>
+                                <strong><?php echo 'R$' . $carrinho->total(); ?></strong>
                             </li>
                         </ul>
                         <a href="index.php" class="btn btn-block btn-info">Novo Itens</a>
